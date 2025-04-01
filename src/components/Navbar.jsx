@@ -1,5 +1,16 @@
 import React, { useState } from "react";
-import { AppBar, Toolbar, Button, Drawer, IconButton, List, ListItem, ListItemText, useMediaQuery, Divider } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Button,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+  useMediaQuery,
+  Divider,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -30,10 +41,24 @@ const Navbar = () => {
         padding: "0 2.5rem",
       }}
     >
-      <Toolbar style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: "5rem" }}>
+      <Toolbar
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          height: "5rem",
+        }}
+      >
         {/* Logo Section - Click to Go Home */}
-        <div style={{ display: "flex", alignItems: "center", cursor: "pointer" }} onClick={() => navigate("/")}> 
-          <img src={logo} alt="Logo" style={{ width: "7rem", height: "auto", objectFit: "contain" }} />
+        <div
+          style={{ display: "flex", alignItems: "center", cursor: "pointer" }}
+          onClick={() => navigate("/")}
+        >
+          <img
+            src={logo}
+            alt="Logo"
+            style={{ width: "7rem", height: "auto", objectFit: "contain" }}
+          />
         </div>
 
         {/* Desktop Navigation Links */}
@@ -42,7 +67,13 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            style={{ display: "flex", gap: "2rem", color: "white", fontSize: "1rem", fontWeight: "500" }}
+            style={{
+              display: "flex",
+              gap: "2rem",
+              color: "white",
+              fontSize: "1rem",
+              fontWeight: "500",
+            }}
           >
             {navLinks.map((item) => (
               <span
@@ -57,7 +88,10 @@ const Navbar = () => {
             ))}
           </motion.div>
         ) : (
-          <IconButton onClick={() => setDrawerOpen(true)} style={{ color: "white" }}>
+          <IconButton
+            onClick={() => setDrawerOpen(true)}
+            style={{ color: "white" }}
+          >
             <MenuIcon fontSize="large" />
           </IconButton>
         )}
@@ -88,18 +122,48 @@ const Navbar = () => {
       </Toolbar>
 
       {/* Mobile Drawer Menu */}
-      <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-        <div style={{ width: "250px", backgroundColor: "#1f2937", height: "100vh", padding: "1rem" }}>
+      <Drawer
+        anchor="right"
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+      >
+        <div
+          style={{
+            width: "250px",
+            backgroundColor: "#1f2937",
+            height: "100vh",
+            padding: "1rem",
+          }}
+        >
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <IconButton onClick={() => setDrawerOpen(false)} style={{ color: "white" }}>
+            <IconButton
+              onClick={() => setDrawerOpen(false)}
+              style={{ color: "white" }}
+            >
               <CloseIcon fontSize="large" />
             </IconButton>
           </div>
-          <Divider style={{ backgroundColor: "#ffffff50", marginBottom: "1rem" }} />
+          <Divider
+            style={{ backgroundColor: "#ffffff50", marginBottom: "1rem" }}
+          />
           <List>
             {navLinks.map((item) => (
-              <ListItem button key={item.name} onClick={() => { setDrawerOpen(false); navigate(item.path); }}>
-                <ListItemText primary={item.name} style={{ color: "white", textAlign: "center", fontSize: "1.2rem" }} />
+              <ListItem
+                button
+                key={item.name}
+                onClick={() => {
+                  setDrawerOpen(false);
+                  navigate(item.path);
+                }}
+              >
+                <ListItemText
+                  primary={item.name}
+                  style={{
+                    color: "white",
+                    textAlign: "center",
+                    fontSize: "1.2rem",
+                  }}
+                />
               </ListItem>
             ))}
           </List>

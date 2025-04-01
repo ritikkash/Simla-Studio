@@ -1,12 +1,13 @@
 import React from 'react'
+import Navbar from '../components/Navbar'
+import Start from '../components/Start'
 
 
 const Home = () => {
   return (
     <>
-    <h1>
-      hellow
-    </h1>
+    <Navbar/>
+    <Start/>
     </>
   )
 }
