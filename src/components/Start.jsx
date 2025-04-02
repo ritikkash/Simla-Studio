@@ -2,8 +2,18 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const Start = () => {
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  };
+
   return (
-    <div id="webcrumbs" className="relative h-screen w-full overflow-hidden">
+    <div id="home" className="relative h-screen w-full overflow-hidden">
       {/* Background image with fade-in animation */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -55,7 +65,10 @@ const Start = () => {
               transition={{ duration: 0.8, delay: 1 }}
               className="flex justify-center md:justify-start"
             >
-              <button className="rounded-full bg-white px-6 py-3 font-medium text-black shadow-lg transition-all duration-300 hover:translate-y-1 hover:bg-black hover:text-white hover:shadow-xl active:translate-y-0 active:shadow-md sm:w-auto md:px-5 md:py-2 lg:px-6 lg:py-3">
+              <button 
+                onClick={scrollToContact}
+                className="rounded-full bg-white px-6 py-3 font-medium text-black shadow-lg transition-all duration-300 hover:translate-y-1 hover:bg-black hover:text-white hover:shadow-xl active:translate-y-0 active:shadow-md sm:w-auto md:px-5 md:py-2 lg:px-6 lg:py-3"
+              >
                 Contact Me
               </button>
             </motion.div>

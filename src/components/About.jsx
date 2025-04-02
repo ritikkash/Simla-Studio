@@ -30,6 +30,17 @@ const About = () => {
     if (buttonInView) buttonControls.start({ opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.3 } });
   }, [titleInView, imageInView, contentInView, skillsInView, buttonInView]);
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      setActiveSection(sectionId);
+    }
+  };
+
   return (
     <div
       style={{
@@ -90,6 +101,7 @@ const About = () => {
                   e.target.style.backgroundColor = "transparent";
                   e.target.style.color = "white";
                 }}
+                onClick={() => scrollToSection("portfolio")}
               >
                 View Portfolio
               </button>
