@@ -21,6 +21,7 @@ import logo from "../assets/simla.png";
 const Navbar = () => {
   const navigate = useNavigate();
   const isMobile = useMediaQuery("(max-width: 900px)");
+  const isSmallMobile = useMediaQuery("(max-width: 600px)");
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const navLinks = [
@@ -38,7 +39,7 @@ const Navbar = () => {
       style={{
         background: "linear-gradient(to right, #1f2937, #000000, #1f2937)",
         boxShadow: "0px 4px 10px rgba(0,0,0,0.3)",
-        padding: "0 2.5rem",
+        padding: isSmallMobile ? "0 1rem" : "0 2.5rem",
       }}
     >
       <Toolbar
@@ -46,7 +47,8 @@ const Navbar = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          height: "5rem",
+          height: isSmallMobile ? "4rem" : "5rem",
+          minHeight: isSmallMobile ? "4rem" : "5rem", // Override Material UI's default minHeight
         }}
       >
         {/* Logo Section - Click to Go Home */}
@@ -57,7 +59,11 @@ const Navbar = () => {
           <img
             src={logo}
             alt="Logo"
-            style={{ width: "7rem", height: "auto", objectFit: "contain" }}
+            style={{ 
+              width: isSmallMobile ? "5rem" : "7rem", 
+              height: "auto", 
+              objectFit: "contain" 
+            }}
           />
         </div>
 
@@ -90,9 +96,14 @@ const Navbar = () => {
         ) : (
           <IconButton
             onClick={() => setDrawerOpen(true)}
-            style={{ color: "white" }}
+            style={{ 
+              color: "white",
+              padding: isSmallMobile ? "4px" : "8px" 
+            }}
           >
-            <MenuIcon fontSize="large" />
+            <MenuIcon 
+              fontSize={isSmallMobile ? "medium" : "large"} 
+            />
           </IconButton>
         )}
 
@@ -129,7 +140,7 @@ const Navbar = () => {
       >
         <div
           style={{
-            width: "250px",
+            width: isSmallMobile ? "220px" : "250px",
             backgroundColor: "#1f2937",
             height: "100vh",
             padding: "1rem",
@@ -138,9 +149,12 @@ const Navbar = () => {
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
             <IconButton
               onClick={() => setDrawerOpen(false)}
-              style={{ color: "white" }}
+              style={{ 
+                color: "white",
+                padding: isSmallMobile ? "4px" : "8px"
+              }}
             >
-              <CloseIcon fontSize="large" />
+              <CloseIcon fontSize={isSmallMobile ? "medium" : "large"} />
             </IconButton>
           </div>
           <Divider
@@ -161,7 +175,7 @@ const Navbar = () => {
                   style={{
                     color: "white",
                     textAlign: "center",
-                    fontSize: "1.2rem",
+                    fontSize: isSmallMobile ? "1rem" : "1.2rem",
                   }}
                 />
               </ListItem>

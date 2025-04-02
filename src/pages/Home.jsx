@@ -1,6 +1,8 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import Start from '../components/Start'
+import About from '../components/About'
+import MyWorks from '../components/Portfolio'
 
 
 const Home = () => {
@@ -8,6 +10,8 @@ const Home = () => {
     <>
     <Navbar/>
     <Start/>
+    <About/>
+    <MyWorks/>
     </>
   )
 }
