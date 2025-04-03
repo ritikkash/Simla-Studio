@@ -49,7 +49,7 @@ const ServiceCard = ({ service, index }) => {
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ duration: 0.1, delay: index * 0.1 }}
       whileHover={{
         scale: 1.05,
         boxShadow: "0px 10px 20px rgba(255, 255, 255, 0.15)",
@@ -80,7 +80,7 @@ const Services = () => {
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.1 }}
           className="text-center mb-12 lg:mb-16"
         >
           <h2 className="text-sm uppercase tracking-wider text-purple-400 mb-2">
