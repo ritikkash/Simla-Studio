@@ -42,7 +42,7 @@ const Start = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="flex flex-1 flex-col justify-center -mt-30 md:-mt-12 lg:-mt-22 pb-8 text-center md:text-left md:pb-0 md:pr-8 lg:pr-12"
+            className="flex flex-1 flex-col justify-center mt-15 md:-mt-12 lg:-mt-22 pb-8 text-center md:text-left md:pb-0 md:pr-8 lg:pr-12"
           >
             <div className="text-xs font-medium uppercase tracking-wider text-white shadow-text sm:text-sm">
               Welcome to Gashwa Studios
