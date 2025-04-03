@@ -13,7 +13,7 @@ const services = [
     title: "Video Editing",
     icon: "✂️",
     description: "Professional editing services including trimming, transitions, effects, and sound design. Focused on seamless storytelling and polished final products with strong visual aesthetics.",
-    color: "from-blue-600 to-cyan-500",
+    color: "from-pink-500 to-red-500",
   },
   {
     title: "Color Grading",
@@ -25,19 +25,19 @@ const services = [
     title: "Sound Design",
     icon: "🔊",
     description: "Immersive audio experiences with careful selection of music, dialogue, and effects. Precise mixing and mastering for pristine sound quality and impactful sonic dimension.",
-    color: "from-emerald-500 to-teal-500",
+    color: "from-gray-400 to-gray-200",
   },
   {
     title: "Motion Graphics",
     icon: "🔄",
     description: "Dynamic motion graphics including titles, animated logos, and infographics. Professional animated visuals to elevate production value and message effectiveness.",
-    color: "from-pink-500 to-rose-500",
+    color: "from-blue-300 to-blue-600",
   },
   {
     title: "Graphic Design",
     icon: "🖌️",
     description: "Eye-catching posters, brochures, logos, and branding materials. Creative visual identity aligned with your project vision and brand communication.",
-    color: "from-violet-500 to-fuchsia-500",
+    color: "from-red-500 to-fuchsia-500",
   },
 ];
 
