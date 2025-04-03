@@ -45,7 +45,7 @@ const Start = () => {
             className="flex flex-1 flex-col justify-center mt-15 md:-mt-12 lg:-mt-22 pb-8 text-center md:text-left md:pb-0 md:pr-8 lg:pr-12"
           >
             <div className="text-xs font-medium uppercase tracking-wider text-white shadow-text sm:text-sm">
-              Welcome to Gashwa Studios
+              Welcome to Simla Studios
             </div>
 
             <h1 className="mt-0 mb-4 text-4xl font-bold leading-tight text-white shadow-text sm:text-5xl md:text-6xl lg:text-7xl">
@@ -55,8 +55,8 @@ const Start = () => {
             </h1>
 
             <p className="mb-8 text-base text-white shadow-text sm:text-lg">
-              Transform your Film and Video into <br className="hidden sm:block" />
-              captivating content.
+            LET'S MAKE YOUR FILM/VIDEO LOOKS MORE <br className="hidden sm:block" />
+            PROFESSIONAL.
             </p>
 
             <motion.div
@@ -69,7 +69,7 @@ const Start = () => {
                 onClick={scrollToContact}
                 className="rounded-full bg-white px-6 py-3 font-medium text-black shadow-lg transition-all duration-300 hover:translate-y-1 hover:bg-black hover:text-white hover:shadow-xl active:translate-y-0 active:shadow-md sm:w-auto md:px-5 md:py-2 lg:px-6 lg:py-3"
               >
-                Contact Me
+                Contact Us
               </button>
             </motion.div>
           </motion.div>
