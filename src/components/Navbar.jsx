@@ -67,13 +67,26 @@ const Navbar = () => {
     { name: "Contact Me", id: "contact" },
   ];
 
+  // Calculate navbar height for offset
+  const getNavbarHeight = () => {
+    return isSmallMobile ? 64 : 80; // 4rem = 64px, 5rem = 80px
+  };
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
+      // Calculate the element's position relative to the document
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      
+      // Apply offset for the navbar height
+      const offsetPosition = elementPosition - getNavbarHeight();
+
+      // Scroll to the adjusted position
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
       });
+      
       setActiveSection(sectionId);
       setDrawerOpen(false);
     }
@@ -86,7 +99,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sections = navLinks.map(link => link.id);
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY + getNavbarHeight() + 20; // Add navbar height plus a small buffer
 
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -104,7 +117,7 @@ const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isSmallMobile]); // Add isSmallMobile as dependency to recalculate when screen size changes
 
   return (
     <AppBar
