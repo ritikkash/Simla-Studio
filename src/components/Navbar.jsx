@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
-  Button,
-  Drawer,
   IconButton,
   List,
   ListItem,
@@ -57,6 +55,8 @@ const Navbar = () => {
   const isSmallMobile = useMediaQuery("(max-width: 600px)");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [hoveredItem, setHoveredItem] = useState(null);
+  const [isButtonHovered, setIsButtonHovered] = useState(false);
 
   const navLinks = [
     { name: "Home", id: "home" },
@@ -175,13 +175,19 @@ const Navbar = () => {
               <motion.span
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
+                onMouseEnter={() => setHoveredItem(item.id)}
+                onMouseLeave={() => setHoveredItem(null)}
                 style={{ 
                   color: activeSection === item.id ? "#9333ea" : "white",
                   cursor: "pointer",
                 }}
-                whileHover={{ 
-                  color: "#9333ea",
-                  y: -2 
+                animate={{ 
+                  color: activeSection === item.id 
+                    ? "#9333ea" 
+                    : hoveredItem === item.id 
+                      ? "#9333ea" 
+                      : "white",
+                  y: hoveredItem === item.id ? -2 : 0
                 }}
                 transition={{ duration: 0.2 }}
               >
@@ -203,9 +209,11 @@ const Navbar = () => {
 
         {/* "Get in Touch" Button */}
         {!isMobile && (
-          <motion.div whileHover={{ scale: 1.05 }}>
-            <Button
-              variant="contained"
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <motion.button
               style={{
                 backgroundColor: "#9333ea",
                 color: "white",
@@ -216,12 +224,26 @@ const Navbar = () => {
                 display: "flex",
                 alignItems: "center",
                 gap: "0.3rem",
+                border: "none",
+                cursor: "pointer",
+                outline: "none",
+                boxShadow: "0px 4px 10px rgba(147, 51, 234, 0.3)",
+                transition: "background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease",
               }}
+              onMouseEnter={() => setIsButtonHovered(true)}
+              onMouseLeave={() => setIsButtonHovered(false)}
               onClick={openGmail}
+              animate={{
+                backgroundColor: isButtonHovered ? "#7e22ce" : "#9333ea",
+                boxShadow: isButtonHovered 
+                  ? "0px 6px 12px rgba(147, 51, 234, 0.4)" 
+                  : "0px 4px 10px rgba(147, 51, 234, 0.3)",
+              }}
+              transition={{ duration: 0.3 }}
             >
               Get in Touch
               <ArrowForwardIcon style={{ color: "white" }} />
-            </Button>
+            </motion.button>
           </motion.div>
         )}
       </Toolbar>
@@ -271,17 +293,29 @@ const Navbar = () => {
                   <ListItem
                     button
                     onClick={() => scrollToSection(item.id)}
+                    onMouseEnter={() => setHoveredItem(item.id)}
+                    onMouseLeave={() => setHoveredItem(null)}
                     style={{
-                      backgroundColor: activeSection === item.id ? "#9333ea30" : "transparent",
+                      backgroundColor: activeSection === item.id 
+                        ? "#9333ea30" 
+                        : hoveredItem === item.id
+                          ? "#9333ea15"
+                          : "transparent",
                       borderRadius: '8px',
                       marginBottom: '4px',
+                      transition: 'background-color 0.2s ease',
                     }}
                   >
                     <ListItemText
                       primary={item.name}
                       style={{
-                        color: activeSection === item.id ? "#9333ea" : "white",
+                        color: activeSection === item.id 
+                          ? "#9333ea" 
+                          : hoveredItem === item.id
+                            ? "#9333ea"
+                            : "white",
                         fontSize: isSmallMobile ? "1rem" : "1.2rem",
+                        transition: 'color 0.2s ease',
                       }}
                     />
                   </ListItem>
@@ -296,10 +330,13 @@ const Navbar = () => {
                 <ListItem
                   button
                   onClick={openGmail}
+                  onMouseEnter={() => setIsButtonHovered(true)}
+                  onMouseLeave={() => setIsButtonHovered(false)}
                   style={{
-                    backgroundColor: "#9333ea30",
+                    backgroundColor: isButtonHovered ? "#9333ea40" : "#9333ea30",
                     borderRadius: '8px',
                     marginTop: '1rem',
+                    transition: 'background-color 0.2s ease',
                   }}
                 >
                   <ListItemText

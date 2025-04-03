@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const testimonials = [
@@ -23,86 +23,171 @@ const testimonials = [
   }
 ];
 
-const TestimonialCard = ({ testimonial, isActive, onClick }) => {
-  const [ref, inView] = useInView({
-    threshold: 0.3,
-    triggerOnce: true
-  });
-
+const TestimonialCard = ({ testimonial, isActive, isMobile }) => {
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6 }}
-      className={`p-8 rounded-xl transition-all duration-300 ${isActive ? "bg-gray-800 shadow-lg" : "bg-gray-800/50"}`}
-      onClick={onClick}
+    <div 
+      className={`p-6 rounded-xl ${isActive ? "bg-gray-800 shadow-lg" : "bg-gray-800/50"} h-full flex flex-col`}
+      style={{ minHeight: isMobile ? '100%' : 'auto' }}
     >
-      <div className="flex items-start mb-6">
-        <svg className="w-12 h-12 text-purple-500" fill="currentColor" viewBox="0 0 24 24">
+      <div className="flex items-start mb-4">
+        <svg className="w-10 h-10 text-purple-500" fill="currentColor" viewBox="0 0 24 24">
           <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
         </svg>
       </div>
-      <p className="text-gray-300 mb-6 text-lg italic">"{testimonial.quote}"</p>
-      <div className="border-t border-gray-700 pt-4">
+      <p className="text-gray-300 mb-4 text-base md:text-lg italic flex-grow">"{testimonial.quote}"</p>
+      <div className="border-t border-gray-700 pt-3">
         <p className="text-white font-semibold">{testimonial.author}</p>
-        <p className="text-purple-400 text-sm">{testimonial.role}</p>
+        <p className="text-purple-400 text-xs md:text-sm">{testimonial.role}</p>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
 const Testimonials = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const controls = useAnimation();
   const [ref, inView] = useInView({
-    threshold: 0.2,
+    threshold: 0.1,
     triggerOnce: true
   });
 
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const carouselVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        x: { type: "spring", stiffness: 300, damping: 30 },
+        opacity: { duration: 0.2 }
+      }
+    },
+    exit: (direction) => ({
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0,
+      transition: {
+        x: { type: "spring", stiffness: 300, damping: 30 },
+        opacity: { duration: 0.2 }
+      }
+    })
+  };
+
   return (
-    <section className="bg-gray-900 py-16 px-4 sm:px-6 lg:px-8">
+    <motion.section 
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={containerVariants}
+      className="bg-gray-900 py-12 px-4 sm:px-6 lg:px-8"
+    >
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+        <motion.div 
+          variants={itemVariants}
+          className="text-center mb-10"
         >
-          <h2 className="text-sm uppercase tracking-wider text-purple-400 mb-2">
+          <h2 className="text-xs md:text-sm uppercase tracking-wider text-purple-400 mb-2">
             TESTIMONIALS
           </h2>
-          <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            WHAT CLIENTS SAYS
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">
+            WHAT CLIENTS SAY
           </h3>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
             Hear what satisfied clients have to say about the extraordinary impact of my work.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+        {/* Desktop Grid */}
+        <motion.div 
+          variants={itemVariants}
+          className="hidden lg:grid grid-cols-3 gap-6 mb-8"
+        >
           {testimonials.map((testimonial, index) => (
-            <TestimonialCard
-              key={testimonial.id}
-              testimonial={testimonial}
-              isActive={activeTestimonial === index}
-              onClick={() => setActiveTestimonial(index)}
-            />
+            <motion.div key={testimonial.id} variants={itemVariants}>
+              <TestimonialCard
+                testimonial={testimonial}
+                isActive={true}
+                isMobile={false}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="flex justify-center space-x-2">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveTestimonial(index)}
-              className={`w-3 h-3 rounded-full transition-all ${activeTestimonial === index ? 'bg-purple-500 w-6' : 'bg-gray-600'}`}
-              aria-label={`Go to testimonial ${index + 1}`}
+        {/* Mobile Carousel */}
+        <motion.div 
+          variants={itemVariants}
+          className="lg:hidden relative mb-8 overflow-hidden"
+        >
+          <motion.div
+            key={activeTestimonial}
+            custom={1} // Direction for animation
+            initial="enter"
+            animate="center"
+            exit="exit"
+            variants={carouselVariants}
+            className="w-full"
+          >
+            <TestimonialCard
+              testimonial={testimonials[activeTestimonial]}
+              isActive={true}
+              isMobile={true}
             />
-          ))}
-        </div>
+          </motion.div>
+          
+          <div className="flex justify-center mt-6 space-x-2">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveTestimonial(index)}
+                className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all ${activeTestimonial === index ? 'bg-purple-500 w-4 md:w-6' : 'bg-gray-600'}`}
+                aria-label={`Go to testimonial ${index + 1}`}
+              />
+            ))}
+          </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

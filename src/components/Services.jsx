@@ -80,7 +80,7 @@ const Services = () => {
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.1 }}
+          transition={{ duration: 0. }}
           className="text-center mb-12 lg:mb-16"
         >
           <h2 className="text-sm uppercase tracking-wider text-purple-400 mb-2">

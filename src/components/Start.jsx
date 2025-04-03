@@ -5,9 +5,19 @@ const Start = () => {
   const scrollToContact = () => {
     const contactSection = document.getElementById("contact");
     if (contactSection) {
-      contactSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
+      // Get navbar height (assuming navbar is 80px or 64px on smaller screens)
+      const navbarHeight = window.innerWidth < 600 ? 64 : 80;
+      
+      // Calculate the element's position relative to the document
+      const elementPosition = contactSection.getBoundingClientRect().top + window.pageYOffset;
+      
+      // Apply offset for the navbar height
+      const offsetPosition = elementPosition - navbarHeight;
+
+      // Scroll to the adjusted position
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
       });
     }
   };
@@ -28,37 +38,37 @@ const Start = () => {
       
       {/* Gradient overlay */}
       <div className="absolute inset-0 z-10 bg-gradient-to-t from-black via-black/60 to-transparent" />
-
+      
       {/* Content container */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
-        className="relative z-20 mx-auto h-full w-full px-4 pt-1 pb-4 md:pt-2 md:pb-6 md:w-4/5 lg:w-3/4 xl:w-2/3"
+        className="relative z-20 mx-auto flex items-center justify-center h-full w-full px-4 md:w-4/5 lg:w-3/4 xl:w-2/3"
       >
-        <div className="flex h-full flex-col md:flex-row">
+        <div className="flex h-full flex-col md:flex-row items-center"> {/* Added items-center */}
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="flex flex-1 flex-col justify-center mt-15 md:-mt-12 lg:-mt-22 pb-8 text-center md:text-left md:pb-0 md:pr-8 lg:pr-12"
+            className="flex flex-1 flex-col justify-center pb-8 text-center md:text-left md:pb-0 md:pr-8 lg:pr-12"
           >
             <div className="text-xs font-medium uppercase tracking-wider text-white shadow-text sm:text-sm">
               Welcome to Simla Studios
             </div>
-
+            
             <h1 className="mt-0 mb-4 text-4xl font-bold leading-tight text-white shadow-text sm:text-5xl md:text-6xl lg:text-7xl">
               Create <br className="md:hidden" />
               Stunning <br className="md:hidden" />
               Videos
             </h1>
-
+            
             <p className="mb-8 text-base text-white shadow-text sm:text-lg">
             LET'S MAKE YOUR FILM/VIDEO LOOKS MORE <br className="hidden sm:block" />
             PROFESSIONAL.
             </p>
-
+            
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -73,7 +83,7 @@ const Start = () => {
               </button>
             </motion.div>
           </motion.div>
-
+          
           {/* Image Container */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
@@ -83,7 +93,7 @@ const Start = () => {
           >
             <img
               src="/src/assets/simla.png"
-              alt="Gashwa Studios"
+              alt="Simla Studios"
               className="max-h-80 w-auto object-contain sm:max-h-96 md:max-h-full"
               onError={(e) => {
                 e.target.onerror = null;
