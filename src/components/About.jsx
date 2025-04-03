@@ -56,7 +56,7 @@ const About = () => {
         {/* Section Title */}
         <motion.div ref={titleRef} initial={{ opacity: 0, y: -30 }} animate={titleControls} style={{ textAlign: "center", marginBottom: "2rem" }}>
           <h2 style={{ color: "#9333ea", fontSize: "1.5rem", fontWeight: "600" }}>About Me</h2>
-          <h3 style={{ color: "white", fontSize: isMobile ? "2rem" : "2.5rem", fontWeight: "700" }}>Learn more about Gashwa Studios</h3>
+          <h3 style={{ color: "white", fontSize: isMobile ? "2rem" : "2.5rem", fontWeight: "700" }}>Learn more about Simla Studios</h3>
           <div style={{ width: "60px", height: "4px", backgroundColor: "#9333ea", margin: "0 auto" }} />
         </motion.div>
 
@@ -64,7 +64,7 @@ const About = () => {
         <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? "2rem" : "4rem", alignItems: "center" }}>
           {/* Image */}
           <motion.div ref={imageRef} initial={{ opacity: 0, x: -50 }} animate={imageControls} style={{ flex: "1", display: "flex", justifyContent: "center" }}>
-            <img src={logo} alt="Gashwa Studios" style={{ maxWidth: isMobile ? "80%" : "100%", borderRadius: "10px", border: "4px solid #4b5563" }} />
+            <img src={logo} alt="Simla Studios" style={{ maxWidth: isMobile ? "80%" : "100%", borderRadius: "10px", border: "4px solid #4b5563" }} />
           </motion.div>
 
           {/* Text Content */}
@@ -72,7 +72,7 @@ const About = () => {
             <motion.div ref={contentRef} initial={{ opacity: 0, x: 50 }} animate={contentControls}>
               <h4 style={{ fontSize: "1.5rem", fontWeight: "600", color: "#f3f4f6" }}>Your Vision, Our Expertise</h4>
               <p style={{ fontSize: "1rem", lineHeight: "1.7", color: "#d1d5db", marginBottom: "1.5rem" }}>
-                At Gashwa Studios, we transform ordinary footage into extraordinary stories. With over 10 years of experience in film and video production, we specialize in creating visually stunning content.
+                At Simla Studios, we transform ordinary footage into extraordinary stories. With over 10 years of experience in film and video production, we specialize in creating visually stunning content.
               </p>
               <p style={{ fontSize: "1rem", lineHeight: "1.7", color: "#d1d5db", marginBottom: "2rem" }}>
                 Whether you need professional videography services, expert video editing, or complete production management, our team combines technical skill with creative vision to exceed your expectations.
