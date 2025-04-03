@@ -93,7 +93,14 @@ const Navbar = () => {
   };
 
   const openGmail = () => {
-    window.location.href = "mailto:vikrantgashwabusiness@gmail.com?subject=Inquiry%20from%20Website";
+    const email = "vikrantgashwabusiness@gmail.com";
+    const subject = "Inquiry from Website";
+    
+    // Create Gmail compose URL with recipient and subject
+    const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}`;
+    
+    // Open in new tab
+    window.open(gmailComposeUrl, '_blank');
   };
 
   useEffect(() => {
