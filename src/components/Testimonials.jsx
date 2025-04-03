@@ -5,20 +5,20 @@ import { useInView } from "react-intersection-observer";
 const testimonials = [
   {
     id: 1,
-    quote: "WorkingGashwa Studio was an absolute game-changer for our project. Their attention to detail, creativity, and technical skills took our raw footage and transformed it into a captivating story. They truly understood our vision and added a level of professionalism and polish that exceeded our expectations. Their ability to communicate and collaborate made the entire process seamless and enjoyable. We highly recommend Gashwa Studio for anyone seeking a talented and dedicated video editor.",
+    quote: "Working with Simla Studio was an absolute game-changer for our project. Their attention to detail, creativity, and technical skills took our raw footage and transformed it into a captivating story. They truly understood our vision and added a level of professionalism and polish that exceeded our expectations. Their ability to communicate and collaborate made the entire process seamless and enjoyable. We highly recommend Gashwa Studio for anyone seeking a talented and dedicated video editor.",
     author: "Global Rashid",
     role: "Client"
   },
   {
     id: 2,
-    quote: "Vikrant is a talented and versatile video editor and filmmaker. They have a keen eye for aesthetics and a gift for crafting visually compelling stories. Their professionalism, creativity, and dedication are unmatched. In our Documentary film he did a really great job.",
+    quote: "Simla Studio have talented and versatile video editor and filmmaking team. They have a keen eye for aesthetics and a gift for crafting visually compelling stories. Their professionalism, creativity, and dedication are unmatched. In our Documentary film he did a really great job.",
     author: "Silver Oak Farm",
     role: "Client"
   },
   {
     id: 3,
-    quote: "From the moment we started working with Gashwa Studio, we knew we were in good hands. Their attention to detail, creative approach, and commitment to excellence made the entire editing process a breeze. They seamlessly merged our vision with their technical expertise, resulting in a final product that exceeded our expectations. Gashwa Studio has a knack for pacing and storytelling that brought our video to life, leaving a lasting impact.",
-    author: "Client Name",
+    quote: "From the moment we started working with Simla Studio, we knew we were in good hands. Their attention to detail, creative approach, and commitment to excellence made the entire editing process a breeze. They seamlessly merged our vision with their technical expertise, resulting in a final product that exceeded our expectations. Gashwa Studio has a knack for pacing and storytelling that brought our video to life, leaving a lasting impact.",
+    author: "Manish Agarwal",
     role: "Client"
   }
 ];
