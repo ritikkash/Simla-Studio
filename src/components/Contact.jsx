@@ -78,7 +78,7 @@ const Contact = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm"
         >
-          <p>© {new Date().getFullYear()} Vikrant Gashwa. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Simla Studios. All rights reserved.</p>
         </motion.div>
       </div>
     </footer>
