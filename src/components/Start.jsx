@@ -86,27 +86,72 @@ const Start = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="flex flex-1 flex-col justify-center mt-12 md:mt-0 pb-8 text-center md:text-left md:pb-0 md:pr-8 lg:pr-12"
+            className="flex flex-col justify-center mt-12 md:mt-0 pb-8 text-center md:pb-0 md:pr-8 lg:pr-12"
           >
             <div className="text-xs font-medium uppercase tracking-wider text-white shadow-text sm:text-sm">
               Welcome to Simla Studios
             </div>
 
             <div className="mt-0 mb-4 text-4xl font-bold flex flex-col leading-tight text-white shadow-text sm:text-5xl md:text-6xl lg:text-7xl">
-              <h1>Create</h1>
-              <h1>Stunning</h1>
-              <h1>Videos</h1>
+              <h1>LET'S MAKE YOUR FILM/VIDEO</h1>
+              <h1>LOOKS MORE PROFESSIONAL</h1>
             </div>
 
-            <p className="mb-8 text-base text-white shadow-text sm:text-lg text-center md:text-left">
-              LET'S MAKE YOUR FILM/VIDEO LOOKS MORE PROFESSIONAL.
-            </p>
+            {/* Container for Stats and Line */} 
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
+              className="flex flex-col items-center mt-8"
+            >
+              {/* Stats boxes container */} 
+              <AnimatePresence>
+                {isVisible && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.5 }} // Delay after parent container animation
+                    className="flex gap-4 justify-center mb-0 pb-0" // Centered, remove bottom margin and padding
+                  >
+                    {/* Clients box with animated counter */}
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      className="bg-black/60 rounded-t-xl rounded-b-none p-4 text-center border border-white/20 w-40"
+                    >
+                      <div className="text-3xl font-bold text-white">
+                        {isVisible && <Counter from={0} to={150} duration={2.5} />}
+                      </div>
+                      <div className="text-sm text-white/80">Clients</div>
+                    </motion.div>
+
+                    {/* Projects box with animated counter */}
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      className="bg-black/60 rounded-t-xl rounded-b-none p-4 text-center border border-white/20 w-40"
+                    >
+                      <div className="text-3xl font-bold text-white">
+                        {isVisible && <Counter from={0} to={1000} duration={2.5} />}
+                      </div>
+                      <div className="text-sm text-white/80">Projects</div>
+                    </motion.div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Horizontal Line */} 
+              <motion.div
+                initial={{ opacity: 0, width: 0 }}
+                animate={{ opacity: 1, width: '100%' }}
+                transition={{ duration: 0.8, delay: 0.8 }} // Delay after stats boxes animation
+                className="mt-0 h-0.5 bg-white w-full max-w-xs md:max-w-sm lg:max-w-md mx-auto" // Centered, remove top margin
+              />
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 1 }}
-              className="flex justify-center md:justify-start"
+              transition={{ duration: 0.8, delay: 2.0 }} // Delay after line animation
+              className="flex justify-center mt-8" // Added margin-top
             >
               <button
                 onClick={scrollToContact}
@@ -115,74 +160,44 @@ const Start = () => {
                 Contact Us
               </button>
             </motion.div>
-          </motion.div>
 
-          {/* Image Container */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="hidden md:flex flex-1 flex-col items-center justify-center md:pl-8 lg:pl-12"
+          </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Let's Discuss Button - Added fixed positioning */} 
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          className="fixed bottom-5 right-5 z-50"
+        >
+          <a
+            href="https://wa.me/YOUR_PHONE_NUMBER"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 rounded-full bg-green-500 px-4 py-2 font-medium text-white shadow-lg transition-all duration-300 hover:translate-y-1 hover:bg-green-600 active:translate-y-0 active:shadow-md"
           >
-            {/* Logo with left-right animation */}
-            <motion.div
-              animate={{
-                x: [0, 5, -5, 5, -5, 0], // subtle left-right movement
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-message-circle"
             >
-              <img
-                src="/src/assets/simla.png"
-                alt="Simla Studios"
-                className="max-h-80 w-auto object-contain sm:max-h-96 md:max-h-full"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.style.display = "none";
-                }}
-              />
-            </motion.div>
+              <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+            </svg>
+            Let's Discuss &gt;&gt;
+          </a>
+        </motion.div>
 
-            {/* Stats boxes container with reduced margin-top */}
-            <AnimatePresence>
-              {isVisible && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 1.5 }}
-                  className="flex gap-4 mt-4"
-                >
-                  {/* Clients box with animated counter */}
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center border border-white/20"
-                  >
-                    <div className="text-3xl font-bold text-white">
-                      {isVisible && <Counter from={0} to={50} duration={2.5} />}
-                    </div>
-                    <div className="text-sm text-white/80">Clients</div>
-                  </motion.div>
-
-                  {/* Projects box with animated counter */}
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center border border-white/20"
-                  >
-                    <div className="text-3xl font-bold text-white">
-                      {isVisible && <Counter from={0} to={100} duration={2.5} />}
-                    </div>
-                    <div className="text-sm text-white/80">Projects</div>
-                  </motion.div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        </div>
-      </motion.div>
-    </div>
+      </div>
+    
   );
 };
 

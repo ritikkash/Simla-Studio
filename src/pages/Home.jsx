@@ -7,6 +7,7 @@ import Services from '../components/Services'
 import ClientsShowcase from '../components/Clients.jsx'
 import Testimonials from '../components/Testimonials.jsx'
 import Contact from '../components/Contact.jsx'
+import Reel from '../components/Reel.jsx'
 
 
 const Home = () => {
@@ -18,6 +19,10 @@ const Home = () => {
       {/* Sections with matching IDs */}
       <section id="home">
         <Start />
+      </section>
+
+      <section id="reel">
+        <Reel/>
       </section>
 
       <section id="about">

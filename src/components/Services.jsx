@@ -4,40 +4,67 @@ import { useInView } from "react-intersection-observer";
 
 const services = [
   {
-    title: "Filmmaking and Video Production",
+    title: "Music Videos",
     icon: "🎬",
-    description: "Comprehensive video production services from concept development to final execution. Specializing in short films, documentaries, music videos, promotional and corporate content.",
+    description: "Shoot & Edit",
     color: "from-purple-600 to-indigo-600",
+    imageUrl: "https://picsum.photos/seed/music-videos/300/150",
   },
   {
-    title: "Video Editing",
+    title: "Youtube Video's",
     icon: "✂️",
-    description: "Professional editing services including trimming, transitions, effects, and sound design. Focused on seamless storytelling and polished final products with strong visual aesthetics.",
+    description: "Shoot & Edit",
     color: "from-pink-500 to-red-500",
+    imageUrl: "https://picsum.photos/seed/youtube-videos/300/150",
   },
   {
-    title: "Color Grading",
+    title: "Short-form Videos",
     icon: "🎨",
-    description: "Advanced color grading to transform your footage's mood and impact. Adjusting color balance, contrast, and creating specific styles for cohesive, visually appealing results.",
+    description: "Shoot & Edit",
     color: "from-amber-500 to-orange-500",
+    imageUrl: "https://picsum.photos/seed/short-form-videos/300/150",
   },
   {
-    title: "Sound Design",
+    title: "Documentaries",
     icon: "🔊",
-    description: "Immersive audio experiences with careful selection of music, dialogue, and effects. Precise mixing and mastering for pristine sound quality and impactful sonic dimension.",
+    description: "Shoot & Edit",
     color: "from-gray-400 to-gray-200",
+    imageUrl: "https://picsum.photos/seed/documentaries/300/150",
   },
   {
-    title: "Motion Graphics",
+    title: "Real Estate Video's",
     icon: "🔄",
-    description: "Dynamic motion graphics including titles, animated logos, and infographics. Professional animated visuals to elevate production value and message effectiveness.",
+    description: "Shoot & Edit",
     color: "from-blue-300 to-blue-600",
+    imageUrl: "https://picsum.photos/seed/real-estate-videos/300/150",
+  },
+  {
+    title: "CORPORATE Shoots",
+    icon: "🖌️",
+    description: "Shoot & Edit",
+    color: "from-red-500 to-fuchsia-500",
+    imageUrl: "https://picsum.photos/seed/corporate-shoots/300/150",
+  },
+  {
+    title: "Wedding",
+    icon: "💍",
+    description: "Only Edit",
+    color: "from-purple-600 to-indigo-600",
+    imageUrl: "https://picsum.photos/seed/wedding/300/150",
+  },
+  {
+    title: "Pre-Wedding",
+    icon: "❤️",
+    description: "Shoot & Edit",
+    color: "from-pink-500 to-red-500",
+    imageUrl: "https://picsum.photos/seed/pre-wedding/300/150",
   },
   {
     title: "Graphic Design",
-    icon: "🖌️",
-    description: "Eye-catching posters, brochures, logos, and branding materials. Creative visual identity aligned with your project vision and brand communication.",
-    color: "from-red-500 to-fuchsia-500",
+    icon: "📐",
+    description: "",
+    color: "from-amber-500 to-orange-500",
+    imageUrl: "https://picsum.photos/seed/graphic-design/300/150",
   },
 ];
 
@@ -54,17 +81,31 @@ const ServiceCard = ({ service, index }) => {
         scale: 1.05,
         boxShadow: "0px 10px 20px rgba(255, 255, 255, 0.15)",
       }}
-      className="relative bg-gradient-to-r p-0.5 rounded-xl shadow-lg h-full transition-all duration-300"
+      className="relative bg-white rounded-xl shadow-lg h-full flex flex-col overflow-hidden transition-all duration-300 p-2"
     >
-      {/* Gradient Border Effect */}
-      <div
-        className={`absolute inset-0 bg-gradient-to-r ${service.color} rounded-xl`}
-      />
+      {/* Thumbnail */}
+      <div className="w-full overflow-hidden rounded-t-xl aspect-w-16 aspect-h-11">
+        <img
+          src={service.imageUrl}
+          alt={service.title}
+          className="w-full h-full object-cover"
+        />
+      </div>
+
       {/* Content Container */}
-      <div className="relative bg-gray-900 rounded-xl p-6 flex flex-col flex-grow transition-all duration-300">
-        <div className="text-4xl mb-4">{service.icon}</div>
-        <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
-        <p className="text-gray-300">{service.description}</p>
+      <div className="p-2 flex flex-col flex-grow">
+        {/* Title, Description, and Button Container */}
+        <div className="flex justify-between items-center">
+          <div className="flex flex-col mr-2">
+            {/* Title and Description */}
+            <h3 className="text-base font-bold text-gray-900 mb-1">{service.title}</h3>
+            <p className="text-gray-600 text-xs">{service.description}</p>
+          </div>
+          {/* Get a Quote Button */}
+          <button className={`py-3 px-4 rounded-full text-white font-semibold text-xs bg-purple-700 hover:opacity-90 transition-opacity flex-shrink-0`}>
+            Get a Quote
+          </button>
+        </div>
       </div>
     </motion.div>
   );
@@ -75,7 +116,7 @@ const Services = () => {
 
   return (
     <section className="bg-gray-900 min-h-screen flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto w-full">
+      <div className="max-w-[80%] mx-auto w-full">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}

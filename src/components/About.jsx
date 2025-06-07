@@ -44,13 +44,14 @@ const About = () => {
   return (
     <div
       style={{
-        padding: isMobile ? "2rem 1rem" : "4rem 2.5rem",
+        padding: isMobile ? "1rem 1rem" : "2rem 2.5rem",
         background: "linear-gradient(to bottom, #1f2937, #111827)",
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
       }}
+
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto", width: "100%" }}>
         {/* Section Title */}

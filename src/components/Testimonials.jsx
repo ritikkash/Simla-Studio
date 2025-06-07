@@ -7,28 +7,40 @@ const testimonials = [
     id: 1,
     quote: "Working with Simla Studio was an absolute game-changer for our project. Their attention to detail, creativity, and technical skills took our raw footage and transformed it into a captivating story. They truly understood our vision and added a level of professionalism and polish that exceeded our expectations. Their ability to communicate and collaborate made the entire process seamless and enjoyable. We highly recommend Gashwa Studio for anyone seeking a talented and dedicated video editor.",
     author: "Global Rashid",
-    role: "Client"
+    role: "Client",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
   },
   {
     id: 2,
     quote: "Simla Studio have talented and versatile video editor and filmmaking team. They have a keen eye for aesthetics and a gift for crafting visually compelling stories. Their professionalism, creativity, and dedication are unmatched. In our Documentary film he did a really great job.",
     author: "Silver Oak Farm",
-    role: "Client"
+    role: "Client",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
   },
   {
     id: 3,
     quote: "From the moment we started working with Simla Studio, we knew we were in good hands. Their attention to detail, creative approach, and commitment to excellence made the entire editing process a breeze. They seamlessly merged our vision with their technical expertise, resulting in a final product that exceeded our expectations. Gashwa Studio has a knack for pacing and storytelling that brought our video to life, leaving a lasting impact.",
     author: "Manish Agarwal",
-    role: "Client"
+    role: "Client",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
   }
 ];
 
 const TestimonialCard = ({ testimonial, isActive, isMobile }) => {
   return (
     <div 
-      className={`p-6 rounded-xl ${isActive ? "bg-gray-800 shadow-lg" : "bg-gray-800/50"} h-full flex flex-col`}
+      className={`p-6 rounded-xl ${isActive ? "bg-gray-800 shadow-lg" : "bg-gray-800/50"} h-full flex flex-col relative pt-16 sm:pt-20 md:pt-24 mt-20`}
       style={{ minHeight: isMobile ? '100%' : 'auto' }}
     >
+      {/* Circular Image Container */}
+      <div className="absolute -top-8 right-4 sm:right-6 md:right-8 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-30 lg:h-30 rounded-full overflow-hidden border-4 border-purple-500 shadow-lg transition-all duration-300">
+        <img 
+          src={testimonial.image} 
+          alt={testimonial.author}
+          className="w-full h-full object-cover"
+        />
+      </div>
+
       <div className="flex items-start mb-4">
         <svg className="w-10 h-10 text-purple-500" fill="currentColor" viewBox="0 0 24 24">
           <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
@@ -125,7 +137,7 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto">
         <motion.div 
           variants={itemVariants}
-          className="text-center mb-10"
+          className="text-center mb-7"
         >
           <h2 className="text-xs md:text-sm uppercase tracking-wider text-purple-400 mb-2">
             TESTIMONIALS
