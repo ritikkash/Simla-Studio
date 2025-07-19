@@ -165,7 +165,7 @@ const Start = () => {
           </div>
         </motion.div>
 
-        {/* Let's Discuss Button - Added fixed positioning */} 
+        {/* WhatsApp Button */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -173,7 +173,7 @@ const Start = () => {
           className="fixed bottom-5 right-5 z-50"
         >
           <a
-            href="https://wa.me/YOUR_PHONE_NUMBER"
+            href="https://wa.me/917018674749"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 rounded-full bg-green-500 px-4 py-2 font-medium text-white shadow-lg transition-all duration-300 hover:translate-y-1 hover:bg-green-600 active:translate-y-0 active:shadow-md"

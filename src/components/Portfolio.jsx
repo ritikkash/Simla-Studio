@@ -1,47 +1,108 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import image1 from "../assets/services/Documentary Portfolio.png"
+import image2 from "../assets/services/Corporate Ads.png"
+import image3 from "../assets/services/YouTube Portfolio.png"
+import image4 from "../assets/services/Short form Portfolio.png"
+import image5 from "../assets/services/Wedding Portfolio.png"
+import image6 from "../assets/services/Realestate Portfolio.png"
 
 const projects = [
   { 
     id: 1, 
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", 
+    image: image1, 
     title: "Documentary Film",
-    link: "https://example.com/documentary"
+    link: "https://youtube.com/playlist?list=PLG8OsIBM5F-4G87dLuTRY0QkGwXmq8Jap&si=gQ4_oho4wCzKW626",
+ 
   },
   { 
     id: 2, 
-    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", 
+    image: image2, 
     title: "Corporate Ads",
-    link: "https://example.com/corporate-ads"
+    link: "https://youtube.com/playlist?list=PLG8OsIBM5F-40NbZnkxnFaa4X0OT-eaw9&si=pgjJS-qtVIT3ARGG "
   },
   { 
     id: 3, 
-    image: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", 
+    image: image3, 
     title: "YouTube Videos",
-    link: "https://youtube.com/your-channel"
+    link: "https://youtube.com/playlist?list=PLG8OsIBM5F-79np7BdPQMbaDNbpfwDLo6&si=bJ8Ij0C2ZFv8AShb"
   },
   { 
     id: 4, 
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", 
+    image: image4, 
     title: "Reels and Shorts",
-    link: "https://instagram.com/your-reels"
+    link: "https://youtu.be/o9QGYmfIMKU"
   },
   { 
     id: 5, 
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", 
-    title: "Graphic Design",
-    link: "https://behance.net/your-portfolio"
+    image: image5,
+    title: "Wedding Videos",
+    link: "https://youtube.com/playlist?list=PLG8OsIBM5F-4LTF6pGcIY3DRDirTb9-Mz&si=omQhADhnVR7xA5NQ "
   },
   { 
     id: 6, 
-    image: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60", 
-    title: "Music Videos",
-    link: "https://vimeo.com/your-music-videos"
+    image: image6, 
+    title: "Real Estate",
+    link: "https://youtube.com/playlist?list=PLG8OsIBM5F-5VP8SR1BmZ3X5Uobnm6Tyb&si=YsEDXsg8bgUwz4pf"
   },
 ];
 
-const ProjectCard = ({ project, index }) => {
+const getPlaylistId = (url) => {
+  const match = url.match(/[?&]list=([a-zA-Z0-9_-]+)/);
+  return match ? match[1] : null;
+};
+
+const PlaylistOverlay = ({ playlistId, onClose, title, link }) => {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm animate-fadeIn">
+      <div className="relative w-full max-w-3xl mx-4 sm:mx-auto p-0 sm:p-4 rounded-2xl shadow-2xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 animate-slideUp">
+        <button
+          className="absolute top-3 right-3 text-white text-3xl bg-purple-600 bg-opacity-80 rounded-full px-3 py-1 shadow-lg hover:bg-purple-800 hover:scale-110 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-400"
+          onClick={onClose}
+          aria-label="Close"
+        >
+          &times;
+        </button>
+        <div className="flex flex-col items-center mt-8 mb-4">
+          <h2 className="text-xl sm:text-2xl font-bold text-white mb-2 text-center">{title}</h2>
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-gray-300 text-sm">Click</span>
+            <a href={link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-purple-400 hover:text-purple-300 underline font-semibold">
+              YouTube
+              <svg className="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20"><path d="M12.293 2.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-8 8a1 1 0 01-.707.293H5a1 1 0 01-1-1v-4a1 1 0 01.293-.707l8-8zM5 15h2.586l8-8L13 3.414l-8 8V15z"></path></svg>
+            </a>
+            <span className="text-gray-300 text-sm">to see the playlist or click the forward icon</span>
+            <a href={link} target="_blank" rel="noopener noreferrer" className="ml-2 text-purple-400 hover:text-purple-300">
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M13.172 12l-4.95-4.95a1 1 0 111.414-1.414l6.364 6.364a1 1 0 010 1.414l-6.364 6.364a1 1 0 11-1.414-1.414L13.172 12z"/></svg>
+            </a>
+          </div>
+          <div className="w-full aspect-video bg-black rounded-xl overflow-hidden">
+            <iframe
+              width="100%"
+              height="400"
+              src={`https://www.youtube.com/embed?listType=playlist&list=${playlistId}&autoplay=1&rel=0`}
+              title="YouTube Playlist"
+              frameBorder="0"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+              className="w-full h-full rounded-xl border-2 border-purple-500 shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ProjectCard = ({ project, index, onPlay }) => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
 
   return (
@@ -51,6 +112,8 @@ const ProjectCard = ({ project, index }) => {
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.1, delay: index * 0.1 }}
       className="relative bg-white rounded-xl shadow-lg h-full flex flex-col overflow-hidden transition-all duration-500 ease-in-out p-2"
+      onClick={() => onPlay(project)}
+      style={{ cursor: "pointer" }}
     >
       {/* Thumbnail with Play Button */}
       <div className="w-full overflow-hidden rounded-t-xl aspect-w-16 aspect-h-11 relative group">
@@ -83,9 +146,27 @@ const ProjectCard = ({ project, index }) => {
 
 const MyWorks = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
+  const [overlayData, setOverlayData] = useState(null); // {playlistId, title, link}
+
+  const handlePlay = (project) => {
+    const playlistId = getPlaylistId(project.link);
+    if (playlistId) {
+      setOverlayData({ playlistId, title: project.title, link: project.link });
+    } else {
+      window.open(project.link, "_blank");
+    }
+  };
 
   return (
     <section className="bg-gray-900 min-h-screen flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
+      {overlayData && (
+        <PlaylistOverlay
+          playlistId={overlayData.playlistId}
+          title={overlayData.title}
+          link={overlayData.link}
+          onClose={() => setOverlayData(null)}
+        />
+      )}
       <div className="max-w-[80%] mx-auto w-full">
         <motion.div
           ref={ref}
@@ -105,7 +186,7 @@ const MyWorks = () => {
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 h-full">
           {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+            <ProjectCard key={project.id} project={project} index={index} onPlay={handlePlay} />
           ))}
         </div>
       </div>

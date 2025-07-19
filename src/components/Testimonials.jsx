@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import rashid from "../assets/testimonials/Global Rashid.jpg"
+import ks from "../assets/testimonials/KS magic Shot.jpg"
+import ds from "../assets/testimonials/Dreamlize studios.jpg"
 
 const testimonials = [
   {
@@ -8,21 +11,21 @@ const testimonials = [
     quote: "Working with Simla Studio was an absolute game-changer for our project. Their attention to detail, creativity, and technical skills took our raw footage and transformed it into a captivating story. They truly understood our vision and added a level of professionalism and polish that exceeded our expectations. Their ability to communicate and collaborate made the entire process seamless and enjoyable. We highly recommend Gashwa Studio for anyone seeking a talented and dedicated video editor.",
     author: "Global Rashid",
     role: "Client",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+    image: rashid
   },
   {
     id: 2,
     quote: "Simla Studio have talented and versatile video editor and filmmaking team. They have a keen eye for aesthetics and a gift for crafting visually compelling stories. Their professionalism, creativity, and dedication are unmatched. In our Documentary film he did a really great job.",
-    author: "Silver Oak Farm",
+    author: "KS magic Shot",
     role: "Client",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+    image: ks
   },
   {
     id: 3,
     quote: "From the moment we started working with Simla Studio, we knew we were in good hands. Their attention to detail, creative approach, and commitment to excellence made the entire editing process a breeze. They seamlessly merged our vision with their technical expertise, resulting in a final product that exceeded our expectations. Gashwa Studio has a knack for pacing and storytelling that brought our video to life, leaving a lasting impact.",
-    author: "Manish Agarwal",
+    author: "Dreamlize Studios",
     role: "Client",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+    image: ds
   }
 ];
 

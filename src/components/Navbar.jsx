@@ -64,7 +64,7 @@ const Navbar = () => {
     { name: "Services", id: "services" },
     { name: "Portfolio", id: "portfolio" },
     { name: "Testimonial", id: "testimonials" },
-    { name: "Contact Me", id: "contact" },
+    { name: "Contact Us", id: "contact" },
   ];
 
   // Calculate navbar height for offset

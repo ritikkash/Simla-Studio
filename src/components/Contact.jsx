@@ -21,7 +21,7 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="text-sm uppercase tracking-wider text-purple-400 mb-2"
           >
-            CONTACT ME
+            CONTACT US
           </motion.h2>
           
           <motion.h3

@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useMediaQuery } from "@mui/material";
 import { useInView } from "react-intersection-observer";
 import logo from "../assets/simla.png"; 
+import reel from "../assets/Reels simla studios.mp4"
 
 const About = () => {
   const isMobile = useMediaQuery("(max-width: 900px)");
@@ -16,10 +17,26 @@ const About = () => {
 
   // Intersection observers
   const [titleRef, titleInView] = useInView({ threshold: 0.2, triggerOnce: true });
-  const [imageRef, imageInView] = useInView({ threshold: 0.2, triggerOnce: true });
+  // We'll use imageRef for the video
+  const [imageRef, imageInView] = useInView({ threshold: 0.2, triggerOnce: false });
   const [contentRef, contentInView] = useInView({ threshold: 0.2, triggerOnce: true });
   const [skillsRef, skillsInView] = useInView({ threshold: 0.2, triggerOnce: true });
   const [buttonRef, buttonInView] = useInView({ threshold: 0.2, triggerOnce: true });
+
+  // Video ref
+  const videoRef = useRef(null);
+
+  // Play/pause video based on intersection
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      if (imageInView) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    }
+  }, [imageInView]);
 
   // Trigger animations when elements come into view
   useEffect(() => {
@@ -46,7 +63,7 @@ const About = () => {
       style={{
         padding: isMobile ? "1rem 1rem" : "2rem 2.5rem",
         background: "linear-gradient(to bottom, #1f2937, #111827)",
-        minHeight: "100vh",
+        minHeight: "80vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -56,16 +73,33 @@ const About = () => {
       <div style={{ maxWidth: "1200px", margin: "0 auto", width: "100%" }}>
         {/* Section Title */}
         <motion.div ref={titleRef} initial={{ opacity: 0, y: -30 }} animate={titleControls} style={{ textAlign: "center", marginBottom: "2rem" }}>
-          <h2 style={{ color: "#9333ea", fontSize: "1.5rem", fontWeight: "600" }}>About Me</h2>
+          <h2 style={{ color: "#9333ea", fontSize: "1.5rem", fontWeight: "600" }}>About Us</h2>
           <h3 style={{ color: "white", fontSize: isMobile ? "2rem" : "2.5rem", fontWeight: "700" }}>Learn more about Simla Studios</h3>
           <div style={{ width: "60px", height: "4px", backgroundColor: "#9333ea", margin: "0 auto" }} />
         </motion.div>
 
         {/* Content */}
         <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? "2rem" : "4rem", alignItems: "center" }}>
-          {/* Image */}
+          {/* Video Reel */}
           <motion.div ref={imageRef} initial={{ opacity: 0, x: -50 }} animate={imageControls} style={{ flex: "1", display: "flex", justifyContent: "center" }}>
-            <img src={logo} alt="Simla Studios" style={{ maxWidth: isMobile ? "80%" : "100%", borderRadius: "10px", border: "4px solid #4b5563" }} />
+            <video
+              ref={videoRef}
+              src={reel}
+              style={{
+                maxWidth: isMobile ? "100%" : "90%",
+                borderRadius: "10px",
+                border: "4px solid #4b5563",
+                boxShadow: "0 4px 24px rgba(0,0,0,0.3)",
+                background: "black",
+                aspectRatio: isMobile ? "16/9" : "16/9",
+                objectFit: "cover",
+                height: isMobile ? "200px" : "320px",
+              }}
+              muted
+              loop
+              playsInline
+              preload="auto"
+            />
           </motion.div>
 
           {/* Text Content */}

@@ -1,6 +1,19 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import image1 from "../assets/services/Music_videos.jpg"
+import image2 from "../assets/services/image2.jpg"
+import image3 from "../assets/services/Short-form-Videos.png"
+import image4 from "../assets/services/image4.jpg"
+import image5 from "../assets/services/Real-Estate-Video’s.png"
+import image6 from "../assets/services/Corporate Shoots.png"
+import image7 from "../assets/services/Wedding.png"
+import image8 from "../assets/services/Pre-Wedding.png"
+import image9 from "../assets/services/Graphic Design.png"
+
+
+
+
 
 const services = [
   {
@@ -8,63 +21,63 @@ const services = [
     icon: "🎬",
     description: "Shoot & Edit",
     color: "from-purple-600 to-indigo-600",
-    imageUrl: "https://picsum.photos/seed/music-videos/300/150",
+    imageUrl: image1,
   },
   {
     title: "Youtube Video's",
     icon: "✂️",
     description: "Shoot & Edit",
     color: "from-pink-500 to-red-500",
-    imageUrl: "https://picsum.photos/seed/youtube-videos/300/150",
+    imageUrl: image2,
   },
   {
     title: "Short-form Videos",
     icon: "🎨",
     description: "Shoot & Edit",
     color: "from-amber-500 to-orange-500",
-    imageUrl: "https://picsum.photos/seed/short-form-videos/300/150",
+    imageUrl: image3,
   },
   {
     title: "Documentaries",
     icon: "🔊",
     description: "Shoot & Edit",
     color: "from-gray-400 to-gray-200",
-    imageUrl: "https://picsum.photos/seed/documentaries/300/150",
+    imageUrl: image4,
   },
   {
     title: "Real Estate Video's",
     icon: "🔄",
     description: "Shoot & Edit",
     color: "from-blue-300 to-blue-600",
-    imageUrl: "https://picsum.photos/seed/real-estate-videos/300/150",
+    imageUrl: image5,
   },
   {
     title: "CORPORATE Shoots",
     icon: "🖌️",
     description: "Shoot & Edit",
     color: "from-red-500 to-fuchsia-500",
-    imageUrl: "https://picsum.photos/seed/corporate-shoots/300/150",
+    imageUrl: image6,
   },
   {
     title: "Wedding",
     icon: "💍",
     description: "Only Edit",
     color: "from-purple-600 to-indigo-600",
-    imageUrl: "https://picsum.photos/seed/wedding/300/150",
+    imageUrl: image7,
   },
   {
     title: "Pre-Wedding",
     icon: "❤️",
     description: "Shoot & Edit",
     color: "from-pink-500 to-red-500",
-    imageUrl: "https://picsum.photos/seed/pre-wedding/300/150",
+    imageUrl: image8,
   },
   {
     title: "Graphic Design",
     icon: "📐",
     description: "",
     color: "from-amber-500 to-orange-500",
-    imageUrl: "https://picsum.photos/seed/graphic-design/300/150",
+    imageUrl: image9,
   },
 ];
 
@@ -102,7 +115,17 @@ const ServiceCard = ({ service, index }) => {
             <p className="text-gray-600 text-xs">{service.description}</p>
           </div>
           {/* Get a Quote Button */}
-          <button className={`py-3 px-4 rounded-full text-white font-semibold text-xs bg-purple-700 hover:opacity-90 transition-opacity flex-shrink-0`}>
+          <button
+            className={
+              `py-3 px-4 rounded-full text-white font-semibold text-xs bg-purple-700 hover:opacity-90 transition-opacity flex-shrink-0`
+            }
+            onClick={() => {
+              window.open(
+                'https://mail.google.com/mail/?view=cm&fs=1&to=vikrantgashwabusiness@gmail.com&su=Service%20Inquiry%20-%20' + encodeURIComponent(service.title),
+                '_blank'
+              );
+            }}
+          >
             Get a Quote
           </button>
         </div>
