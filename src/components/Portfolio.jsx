@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import image1 from "../assets/services/Documentary Portfolio.png"
 import image2 from "../assets/services/Corporate Ads.png"
-import image3 from "../assets/services/YouTube Portfolio.png"
+import image3 from "../assets/services/Youtube-portfolio.png"
 import image4 from "../assets/services/Short form Portfolio.png"
 import image5 from "../assets/services/Wedding Portfolio.png"
 import image6 from "../assets/services/Realestate Portfolio.png"
