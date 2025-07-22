@@ -93,7 +93,7 @@ const Navbar = () => {
   };
 
   const openGmail = () => {
-    const email = "vikrantgashwabusiness@gmail.com";
+    const email = "contact@simlastudios.com";
     const subject = "Inquiry from Website";
     
     // Create Gmail compose URL with recipient and subject
