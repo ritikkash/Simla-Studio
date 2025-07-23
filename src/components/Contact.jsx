@@ -44,9 +44,9 @@ const Contact = () => {
               +91 7018674749
             </a>
             
-            <a href="mailto:vikrantgashwabusiness@gmail.com" className="flex items-center text-lg hover:text-purple-400 transition-colors">
+            <a href="mailto:contact@simlastudios.com" className="flex items-center text-lg hover:text-purple-400 transition-colors">
               <FaEnvelope className="mr-3 text-purple-500" />
-              vikrantgashwabusiness@gmail.com
+              contact@simlastudios.com
             </a>
           </motion.div>
 

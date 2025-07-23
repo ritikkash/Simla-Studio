@@ -121,7 +121,7 @@ const ServiceCard = ({ service, index }) => {
             }
             onClick={() => {
               window.open(
-                'https://mail.google.com/mail/?view=cm&fs=1&to=vikrantgashwabusiness@gmail.com&su=Service%20Inquiry%20-%20' + encodeURIComponent(service.title),
+                'https://mail.google.com/mail/?view=cm&fs=1&to=contact@simlastudios.com&su=Service%20Inquiry%20-%20' + encodeURIComponent(service.title),
                 '_blank'
               );
             }}
