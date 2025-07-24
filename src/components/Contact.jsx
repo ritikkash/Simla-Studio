@@ -7,7 +7,7 @@ const Contact = () => {
     { icon: <FaLinkedin size={20} />, url: "https://www.linkedin.com/company/simlastudios" },
     { icon: <FaInstagram size={20} />, url: "https://www.instagram.com/simlastudios/" },
     { icon: <FaYoutube size={20} />, url: "https://www.youtube.com/@CNCSimla_Studios" },
-    { icon: <FaFacebook size={20} />, url: "https://facebook.com/yourpage" }
+    { icon: <FaFacebook size={20} />, url: "https://www.facebook.com/profile.php?id=61572740934531" }
   ];
 
   return (
