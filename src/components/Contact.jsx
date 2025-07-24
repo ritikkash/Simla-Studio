@@ -4,9 +4,9 @@ import { FaLinkedin, FaInstagram, FaYoutube, FaFacebook, FaPhone, FaEnvelope } f
 
 const Contact = () => {
   const socialLinks = [
-    { icon: <FaLinkedin size={20} />, url: "https://linkedin.com/in/yourprofile" },
-    { icon: <FaInstagram size={20} />, url: "https://instagram.com/yourprofile" },
-    { icon: <FaYoutube size={20} />, url: "https://youtube.com/yourchannel" },
+    { icon: <FaLinkedin size={20} />, url: "https://www.linkedin.com/company/simlastudios" },
+    { icon: <FaInstagram size={20} />, url: "https://www.instagram.com/simlastudios/" },
+    { icon: <FaYoutube size={20} />, url: "https://www.youtube.com/@CNCSimla_Studios" },
     { icon: <FaFacebook size={20} />, url: "https://facebook.com/yourpage" }
   ];
 
